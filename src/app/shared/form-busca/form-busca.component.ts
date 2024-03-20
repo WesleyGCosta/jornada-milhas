@@ -10,6 +10,10 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
+import { FormBuscaService } from '../../core/services/form-busca.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { DropdownUfComponent } from './dropdown-uf/dropdown-uf.component';
 
 @Component({
   selector: 'app-form-busca',
@@ -24,13 +28,16 @@ import { ModalComponent } from '../modal/modal.component';
     MatInputModule,
     MatDatepickerModule,
     MatButtonModule,
-    MatDialogModule],
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    DropdownUfComponent],
   templateUrl: './form-busca.component.html',
   styleUrl: './form-busca.component.scss'
 })
 export class FormBuscaComponent {
-  constructor(public dialog: MatDialog) {}
-
+  constructor(public dialog: MatDialog, public formBuscaService: FormBuscaService) {}
+  
   openDialog() {
     const dialogRef = this.dialog.open(ModalComponent, {
       width: '50%'
